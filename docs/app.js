@@ -1,7 +1,25 @@
 // AWIT Karaoke's site: things coming in as they scroll into view, the newest APK (its version, size and downloads,
-// from GitHub's releases), and on a computer a QR code to open this page on the phone.
+// from GitHub's releases), on a computer a QR code to open this page on the phone, Material ripples, and the top
+// app bar turning into a surface once the page moves under it.
 (function () {
   var REPO = 'mac0ten/awit-karaoke-releases';
+
+  document.addEventListener('pointerdown', function (e) {
+    var el = e.target.closest && e.target.closest('.btn, .text-btn, summary');
+    if (!el) return;
+    var r = el.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2.2, s = document.createElement('span');
+    s.className = 'ripple';
+    s.style.width = s.style.height = d + 'px';
+    s.style.left = (e.clientX - r.left - d / 2) + 'px';
+    s.style.top = (e.clientY - r.top - d / 2) + 'px';
+    el.appendChild(s);
+    setTimeout(function () { s.remove(); }, 650);
+  });
+
+  var bar = document.getElementById('bar');
+  function scrolled() { bar.classList.toggle('scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', scrolled, { passive: true });
+  scrolled();
 
   var shown = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
