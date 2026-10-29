@@ -108,6 +108,8 @@ h1 { font-size: clamp(36px, 5.4vw, 57px); line-height: 1.12; font-weight: 700; l
 .cta { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 .meta { color: var(--on-surface-var); font-size: 14px; line-height: 20px; letter-spacing: .25px; margin-top: 16px; }
 .meta span + span:not(:empty)::before { content: " · "; }
+.news { max-width: 560px; margin-top: 8px; font-size: 14px; line-height: 20px; letter-spacing: .25px; color: var(--on-surface); }
+.news b { color: var(--primary-light); }
 .hero-media video { width: 100%; display: block; border-radius: var(--r-xl); box-shadow: var(--e3), 0 0 48px rgba(139, 92, 246, .22);
   animation: float 6s var(--ease) infinite alternate; }
 @keyframes float { to { transform: translateY(-8px); } }

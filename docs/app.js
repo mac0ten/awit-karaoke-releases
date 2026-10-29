@@ -1,5 +1,5 @@
-// AWIT Karaoke's site: things coming in as they scroll into view, the newest APK (its version, size and downloads,
-// from GitHub's releases), on a computer a QR code to open this page on the phone, Material ripples, and the top
+// AWIT Karaoke's site: things coming in as they scroll into view, the newest APK (its version, size, downloads and
+// what is new in it, from GitHub's releases), on a computer a QR code to open this page on the phone, Material ripples, and the top
 // app bar turning into a surface once the page moves under it.
 (function () {
   var REPO = 'mac0ten/awit-karaoke-releases';
@@ -54,6 +54,14 @@
       document.getElementById('dl-label').textContent = 'Download APK · ' + mb + ' MB';
       document.getElementById('meta').textContent = 'Version ' + version + ' · Android 10 or newer · free, not for sale';
       if (total > 0) document.getElementById('count').textContent = total.toLocaleString() + ' downloads';
+      // what is new in it: the release's notes (its first paragraph), unless they only name the version
+      var notes = (newest.rel.body || '').trim().split(/\r?\n\s*\r?\n/)[0];
+      if (notes && notes !== newest.rel.name) {
+        var news = document.getElementById('news');
+        news.querySelector('b').textContent = 'New in ' + version + ':';
+        news.querySelector('span').textContent = notes;
+        news.hidden = false;
+      }
     })
     .catch(function () { /* the button keeps pointing at the releases page */ });
 
