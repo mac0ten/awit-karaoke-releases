@@ -52,7 +52,7 @@
       var dl = document.getElementById('download');
       dl.href = newest.apk.browser_download_url;
       document.getElementById('dl-label').textContent = 'Download APK · ' + mb + ' MB';
-      document.getElementById('meta').textContent = 'Version ' + version + ' · Android 10 or newer · free, not for sale';
+      document.getElementById('meta').textContent = 'Version ' + version + ' · Android 4.4 or newer · free, not for sale';
       if (total > 0) document.getElementById('count').textContent = total.toLocaleString() + ' downloads';
       // what is new in it: the release's notes (its first paragraph), unless they only name the version
       var notes = (newest.rel.body || '').trim().split(/\r?\n\s*\r?\n/)[0];
